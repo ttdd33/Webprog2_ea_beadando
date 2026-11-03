@@ -1,0 +1,8 @@
+/* Saját kiegészítések a Start Bootstrap "Modern Business" témához */
+.navbar .btn-link.nav-link { text-decoration: none; border: 0; }
+.pizza-kep { width: 100%; height: 220px; object-fit: cover; }
+.hero-kep { max-height: 400px; object-fit: cover; width: 100%; }
+.stat-szam { font-size: 2.2rem; font-weight: 800; }
+.table-wrap { overflow-x: auto; }
+.chart-box { position: relative; min-height: 320px; }
+@media (max-width: 576px) { .stat-szam { font-size: 1.5rem; } }
