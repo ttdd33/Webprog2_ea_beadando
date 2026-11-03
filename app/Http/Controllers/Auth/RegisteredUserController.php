@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class RegisteredUserController extends Controller
 {
@@ -28,7 +29,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): SymfonyResponse
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -46,6 +47,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Módosítás: bejelentkezés / regisztráció után a saját (Blade) főoldalra lépünk.
+        // Inertia::location teljes oldalbetöltést kér, mert a főoldal nem React oldal.
+        return Inertia::location(redirect()->intended('/')->getTargetUrl());
     }
 }

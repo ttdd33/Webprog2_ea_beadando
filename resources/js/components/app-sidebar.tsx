@@ -18,6 +18,12 @@ const mainNavItems: NavItem[] = [
 
 const footerNavItems: NavItem[] = [
     {
+        // Módosítás (a tanári megoldás /introduction linkje helyett): vissza a saját főoldalra
+        title: 'Net Pizzéria főoldal',
+        href: '/',
+        icon: Folder,
+    },
+    {
         title: 'Repository',
         href: 'https://github.com/laravel/react-starter-kit',
         icon: Folder,
