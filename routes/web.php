@@ -1,12 +1,11 @@
 <?php
 
+use App\Http\Controllers\FooldalController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 // Látogató (nem bejelentkezett) is eléri: Főoldal, Adatbázis, Kapcsolat, Diagram
-Route::get('/', function () {
-    return view('fooldal');
-})->name('home');
+Route::get('/', [FooldalController::class, 'index'])->name('home');
 
 // Forrás: Megoldasok.zip / 07-08-Authentication / web.php – auth middleware csoport
 Route::middleware(['auth', 'verified'])->group(function () {
