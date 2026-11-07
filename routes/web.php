@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdatbazisController;
+use App\Http\Controllers\DiagramController;
 use App\Http\Controllers\FooldalController;
 use App\Http\Controllers\KapcsolatController;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,7 @@ Route::get('/', [FooldalController::class, 'index'])->name('home');
 Route::get('adatbazis', [AdatbazisController::class, 'index']);
 Route::get('kapcsolat', [KapcsolatController::class, 'create']);
 Route::post('kapcsolat', [KapcsolatController::class, 'store']);
+Route::get('diagram', [DiagramController::class, 'index']);
 
 // Forrás: Megoldasok.zip / 07-08-Authentication / web.php – auth middleware csoport
 Route::middleware(['auth', 'verified'])->group(function () {
