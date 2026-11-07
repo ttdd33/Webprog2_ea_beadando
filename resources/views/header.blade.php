@@ -9,6 +9,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 {{-- Mindenki látja (látogató is) --}}
                 <li class="nav-item"><a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Főoldal</a></li>
+                <li class="nav-item"><a class="nav-link {{ Request::is('adatbazis') ? 'active' : '' }}" href="/adatbazis">Adatbázis</a></li>
 
                 @if (Auth::check())
                     <li class="nav-item">
