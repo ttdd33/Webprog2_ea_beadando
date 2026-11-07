@@ -11,6 +11,7 @@
                 <li class="nav-item"><a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Főoldal</a></li>
                 <li class="nav-item"><a class="nav-link {{ Request::is('adatbazis') ? 'active' : '' }}" href="/adatbazis">Adatbázis</a></li>
                 <li class="nav-item"><a class="nav-link {{ Request::is('kapcsolat') ? 'active' : '' }}" href="/kapcsolat">Kapcsolat</a></li>
+                <li class="nav-item"><a class="nav-link {{ Request::is('diagram') ? 'active' : '' }}" href="/diagram">Diagram</a></li>
 
                 @if (Auth::check())
                     <li class="nav-item">
