@@ -16,6 +16,10 @@
                 @if (Auth::check())
                     {{-- Regisztrált látogató és admin --}}
                     <li class="nav-item"><a class="nav-link {{ Request::is('uzenetek') ? 'active' : '' }}" href="/uzenetek">Üzenetek</a></li>
+                    @if (Auth::user()->role == 1)
+                        {{-- Csak admin --}}
+                        <li class="nav-item"><a class="nav-link {{ Request::is('pizzak*') ? 'active' : '' }}" href="/pizzak">CRUD</a></li>
+                    @endif
                     <li class="nav-item">
                         <form method="post" action="/logout" class="d-inline">
                             @csrf
