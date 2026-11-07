@@ -4,6 +4,7 @@ use App\Http\Controllers\AdatbazisController;
 use App\Http\Controllers\DiagramController;
 use App\Http\Controllers\FooldalController;
 use App\Http\Controllers\KapcsolatController;
+use App\Http\Controllers\UzenetController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -19,6 +20,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
+
+    // Regisztrált látogató: Üzenetek menü
+    Route::get('uzenetek', [UzenetController::class, 'index']);
 });
 
 require __DIR__.'/settings.php';

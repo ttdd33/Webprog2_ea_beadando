@@ -14,6 +14,8 @@
                 <li class="nav-item"><a class="nav-link {{ Request::is('diagram') ? 'active' : '' }}" href="/diagram">Diagram</a></li>
 
                 @if (Auth::check())
+                    {{-- Regisztrált látogató és admin --}}
+                    <li class="nav-item"><a class="nav-link {{ Request::is('uzenetek') ? 'active' : '' }}" href="/uzenetek">Üzenetek</a></li>
                     <li class="nav-item">
                         <form method="post" action="/logout" class="d-inline">
                             @csrf
