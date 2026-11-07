@@ -1,0 +1,26 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+// A Kapcsolat űrlapon küldött üzenetek tárolása
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('uzenetek', function (Blueprint $table) {
+            $table->id();
+            $table->string('nev');
+            $table->string('email');
+            $table->string('targy');
+            $table->text('uzenet');
+            $table->timestamps(); // created_at = a küldés ideje
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('uzenetek');
+    }
+};
