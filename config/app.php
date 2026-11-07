@@ -15,6 +15,9 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    // A /run-migrations útvonal kulcsa (lásd routes/web.php)
+    'migrate_key' => env('MIGRATE_KEY'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

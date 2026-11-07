@@ -6,6 +6,8 @@ use App\Http\Controllers\FooldalController;
 use App\Http\Controllers\KapcsolatController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\UzenetController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -30,6 +32,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->parameters(['pizzak' => 'pizza'])
         ->except(['show'])
         ->middleware('admin');
+});
+
+// Forrás: Web-programozas-2-Előadás.pdf – "Laravel feltöltése web-szerverre", B, Artisan::call
+// A tárhelyen böngészőből futtatja a migrációt és a seedinget: /run-migrations?kulcs=...
+// Módosítás: csak a .env fájlban megadott MIGRATE_KEY kulccsal fut, így más nem tudja törölni az adatbázist.
+Route::get('run-migrations', function (Request $request) {
+    $kulcs = config('app.migrate_key');
+    abort_unless($kulcs && $request->query('kulcs') === $kulcs, 403);
+    Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
+    return '<pre>'.e(Artisan::output()).'</pre>';
 });
 
 require __DIR__.'/settings.php';
